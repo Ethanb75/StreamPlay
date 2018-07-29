@@ -1,0 +1,42 @@
+<html>
+
+<head>
+  <title>This</title>
+  <style>
+    .vidShare {
+      display: flex;
+    }
+
+    .vidShare__chat {}
+  </style>
+</head>
+
+<body>
+
+  <script src="https://cdn.bootcss.com/flv.js/1.4.0/flv.min.js"></script>
+  <div class="vidShare">
+    <div class="vidShare__video">
+      <video id="videoElement" muted></video>
+    </div>
+    <div class="vidShare__chat">
+      chat area
+    </div>
+  </div>
+  <script>
+    if (flvjs.isSupported()) {
+      setTimeout(function () {
+        var videoElement = document.getElementById('videoElement');
+        var flvPlayer = flvjs.createPlayer({
+          type: 'flv',
+          // url: 'http://localhost:8000/live/stream1.flv'
+          url: 'https://powerful-scrubland-93424.herokuapp.com/live/stream1.flv'
+        });
+        flvPlayer.attachMediaElement(videoElement);
+        flvPlayer.load();
+        flvPlayer.play();
+      }, 3000)
+    }
+  </script>
+</body>
+
+</html>
